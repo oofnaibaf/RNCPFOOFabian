@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- saved from url=(0122)file:///C:/Users/fabia/Documents/Ironhack%20ALL/Coursework/Final%20project/Global-Super-Store-Database/Flask/frontend.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+    <script>
+        async function fetchData() {
+            const table = document.getElementById("table").value;
+            const field = document.getElementById("field").value;
+            const value = document.getElementById("value").value;
+            const url = `http://127.0.0.1:5000/api/${table}/filter?field=${field}&value=${value}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>API Demonstration</h1>
+    <label for="table">Table:</label>
+    <input type="text" id="table" placeholder="customers"><br>
+    <label for="field">Field:</label>
+    <input type="text" id="field" placeholder="CustomerID"><br>
+    <label for="value">Value:</label>
+    <input type="text" id="value" placeholder="AA315"><br><br>
+    <button onclick="fetchData()">Fetch Data</button>
+    <pre id="result">[<br>  {<br>    "CustomerID": "AA-315",<br>    "CustomerName": "Alex Avila",<br>    "Segment": "Consumer"<br>  }<br>]</pre>
+
+
+
+</body></html>
